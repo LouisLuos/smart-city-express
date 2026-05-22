@@ -14,8 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { api } from '@/services/api';
 
-import { Demand } from '@/types/Demand';
-import { DemandStatus } from '@/types/Status';
+import { Demand } from '@shared/types/Demand';
+import { DemandStatus } from '@shared/types/Status';
 
 const STATUS_OPTIONS: DemandStatus[] = ['PENDING', 'IN_PROGRESS', 'RESOLVED', 'REJECTED'];
 

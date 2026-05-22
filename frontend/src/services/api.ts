@@ -1,7 +1,7 @@
 
-import { User } from '@/types/User';
-import { Demand, CreateDemandDTO } from '@/types/Demand';
-import { DemandStatus } from '@/types/Status';
+import { User } from '@shared/types/User';
+import { Demand, CreateDemandDTO } from '@shared/types/Demand';
+import { DemandStatus } from '@shared/types/Status';
 
 let demandasMock: Demand[] = [
   {

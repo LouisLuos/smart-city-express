@@ -1,18 +1,17 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
 const app = express();
 
-express.json({ limit: '10mb' })
 app.use(cors({
     origin: 'http://localhost:3000',
-    method: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
-app.use(express.json());
-
+app.use(express.json({ limit: '10mb' }));
 
 // Rota de exemplo
-app.get('/', (_req: any, res: any) => {
+app.get('/', (_req, res) => {
     res.json({ message: 'Smart City Express API' });
 });
 
-module.exports = app;
+export default app;

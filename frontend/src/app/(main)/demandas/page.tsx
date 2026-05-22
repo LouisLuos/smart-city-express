@@ -13,9 +13,9 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useDemandStore } from '@/store/demandStore';
-import { Demand } from '@/types/Demand';
-import { DemandStatus } from '@/types/Status';
-import { DemandCategory } from '@/types/Category';
+import { Demand } from '@shared/types/Demand';
+import { DemandStatus } from '@shared/types/Status';
+import { DemandCategory } from '@shared/types/Category';
 
 
 const STATUS_OPTIONS: DemandStatus[] = ['PENDING', 'IN_PROGRESS', 'RESOLVED', 'REJECTED'];
