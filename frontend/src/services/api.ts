@@ -112,14 +112,14 @@ export const api = {
   },
 
   // 2. Criar uma nova
-  addDemanda: async (dados: CreateDemandDTO): Promise<Demand> => {
+  addDemanda: async (dados: CreateDemandDTO, userId: string): Promise<Demand> => {
     return new Promise((resolve) => {
       setTimeout(() => {
         const novaDemanda: Demand = {
           ...dados,
           id: `CIV-${Math.floor(Math.random() * 10000)}`,
           status: 'PENDING',
-          userId: '1', // Mocking current user
+          userId: userId, // Usando o ID passado por parâmetro
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         };

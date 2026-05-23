@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { api } from '../services/api';
 import { Demand, CreateDemandDTO } from '@shared/types/Demand';
 import { DemandStatus } from '@shared/types/Status';
+import { useAuthStore } from './authStore';
 
 interface DemandState {
   demandas: Demand[];
@@ -44,10 +45,17 @@ export const useDemandStore = create<DemandState>((set, get) => ({
   addDemanda: async (dados) => {
     set({ isLoading: true, error: null });
     try {
-      // Chama a Fake API para criar
-      const novaDemandaCriada = await api.addDemanda(dados);
+      // Puxa o usuário logado do AuthStore
+      const { user } = useAuthStore.getState();
 
-      // Pega as demandas atuais e adiciona a nova no começo
+      if (!user) {
+        throw new Error("Usuário não está logado");
+      }
+
+      // Chama a Fake API para criar passando o userId
+      const novaDemandaCriada = await api.addDemanda(dados, user.id);
+
+      // Pela as demandas atuais e adiciona a nova no começo
       set((state) => ({
         demandas: [novaDemandaCriada, ...state.demandas],
         isLoading: false
