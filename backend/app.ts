@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import authRouter from './routes/auth.route.js';
 
 const app = express();
 
@@ -8,6 +9,8 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(express.json({ limit: '10mb' }));
+
+app.use('/api/auth', authRouter)
 
 // Rota de exemplo
 app.get('/', (_req, res) => {
