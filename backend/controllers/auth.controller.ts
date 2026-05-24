@@ -7,11 +7,10 @@ export const authController = {
         try {
             const validatedData = userSchema.parse(req.body);
             const user = await authService.register(validatedData);
-            res.status(201).json(user);
+            return res.status(201).json(user);
         } catch (error: any) {
-            res.status(400).json({ 
-                message: error.message || "Erro na requisição", 
-                details: error.errors || error 
+            return res.status(400).json({ 
+                message: error.message || "Erro interno no servidor"
             });
         }
     }

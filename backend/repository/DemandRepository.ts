@@ -1,6 +1,6 @@
-import { Demand } from '@shared/types/Demand.js'
-import { DemandStatus } from '@shared/types/Status.js';
-import { uuidv4 } from 'zod';
+import { Demand } from '../../shared/types/Demand.js'
+import { DemandStatus } from '../../shared/types/Status.js';
+import { v4 as uuidv4 } from 'uuid';
 
 let demandasMock: Demand[] = [
   {
@@ -86,3 +86,5 @@ export class DemandRepository {
 
 
 }
+
+export const demandRepository = new DemandRepository()
