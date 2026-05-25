@@ -1,9 +1,9 @@
-
+import jwt from 'jsonwebtoken';
 import { userRepository } from "../repository/UserRepository.js";
-//const bcrypt = require('bcrypt')
+import { z } from "zod";
+import { loginSchema } from "../schemas/auth.schema.js";
 
-
-
+type LoginCredentials = z.infer<typeof loginSchema>;
 
 export const authService = {
     register: async (userData: any) => {
@@ -12,19 +12,35 @@ export const authService = {
             throw new Error("E-mail já cadastrado");
         }
 
-
-// Por que o TODO agora?
-//  Como a task pede para focar no fluxo do endpoint primeiro, você vai salvar a senha exatamente como ela chega. O TODO serve para lembrarmos que, antes de colocar
-//  esse sistema no ar (produção), precisamos instalar o bcrypt e fazer essa conversão.
-
-
-     //   const hashedPassword = await bcrypt.hash(userData.password, 10)
-
         const newUser = {
             ...userData,
             role: 'CITIZEN' as const
         }
 
         return await userRepository.create(newUser)
+    },
+
+    login: async (credentials: LoginCredentials) => {
+        const user = await userRepository.findByEmail(credentials.email);
+        
+        if (!user || user.password !== credentials.password) {
+            throw new Error("Credenciais inválidas");
+        }
+
+        const secret = process.env.JWT_SECRET || 'your-default-secret';
+        
+        const token = jwt.sign(
+            { 
+                userId: user.id, 
+                role: user.role,
+                name: user.name,
+                email: user.email
+            }, 
+            secret, 
+            { expiresIn: '6hr' }
+        );
+
+        const { password, ...userWithoutPassword } = user;
+        return { user: userWithoutPassword, token };
     }
 }

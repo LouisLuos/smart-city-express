@@ -2,7 +2,7 @@ import { User } from "../../shared/types/User.js";
 import { v4 as uuidv4 } from 'uuid';
 
 // Mock data (Simulando um banco de dados)
-const usersMock: (User & { password: string })[] = [
+export const usersMock: (User & { password: string })[] = [
   {
     id: '1',
     name: 'João Cidadão',
