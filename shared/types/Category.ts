@@ -1,7 +1,10 @@
-export type DemandCategory = 
-  | 'ROAD_MAINTENANCE'    // Manutenção de vias
-  | 'PUBLIC_LIGHTING'     // Iluminação pública
-  | 'GARBAGE_COLLECTION'  // Coleta de lixo
-  | 'SANITATION'          // Saneamento
-  | 'INSPECTION'          // Fiscalização
-  | 'OTHER';              // Outros
+export const DEMAND_CATEGORIES = [
+  'ROAD_MAINTENANCE',
+  'PUBLIC_LIGHTING',
+  'GARBAGE_COLLECTION',
+  'SANITATION',
+  'INSPECTION',
+  'OTHER'
+] as const;
+
+export type DemandCategory = (typeof DEMAND_CATEGORIES)[number];
