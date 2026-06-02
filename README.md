@@ -20,7 +20,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máqu
 
 ### Instalação
 
-1. Clone o repositório: git clone [https://github.com/ndrfelipe/smart-city.git](https://github.com/ndrfelipe/smart-city.git ) 
+1. Clone o repositório: git clone [(https://github.com/LouisLuos/smart-city-express.git)] 
 2. Acesse a página do projeto: cd frontend
 3. Instale as deendências: npm install
 4. Inicie o servidor de desenvolvimento: npm run dev
