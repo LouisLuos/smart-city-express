@@ -1,36 +1,94 @@
 # Smart City - Plataforma de Gestão de Demandas Urbanas
 
-Bem-vindos ao repositório front-end da nossa Plataforma de Gestão de Demandas Urbanas! Este projeto é um MVP (Minimum Viable Product) focado em centralizar o registro, acompanhamento e gestão de solicitações públicas (como buracos em vias, iluminação e saneamento), conectando cidadãos e gestores públicos.
+Plataforma profissional de gestão pública que conecta cidadãos a gestores urbanos para o registro e acompanhamento de demandas de infraestrutura (iluminação, saneamento, vias, etc.).
 
-## Tecnologias Utilizadas
+---
 
-O projeto foi construído utilizando as seguintes tecnologias:
-* **Framework:** Next.js (App Router) com TypeScript
-* **Estilização:** Tailwind CSS + Chakra UI
-* **Gerenciamento de Estado:** Zustand
-* **Dados:** Fake API (Mock)
+## 🚀 Tecnologias & Stack
 
-## Como rodar o projeto localmente
+### Frontend
+- **Framework:** [Next.js 15+](https://nextjs.org/) (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS + Chakra UI
+- **Estado:** Zustand
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina.
+### Backend
+- **Framework:** [Express](https://expressjs.com/)
+- **Linguagem:** TypeScript
+- **Validação:** [Zod](https://zod.dev/)
+- **Autenticação:** JSON Web Token (JWT) & bcrypt
+- **Ferramentas de Desenvolvimento:** Nodemon & tsx
+
+### Infraestrutura & Roadmap (Próximas Fases)
+- **Banco de Dados:** PostgreSQL (Relacional) + Prisma ORM
+- **Cache & Performance:** Redis
+- **Containerização:** Docker & Docker Compose
+- **Monitoramento:** Sentry (Error Tracking)
+- **Logs:** Winston / Pino
+- **CI/CD:** GitHub Actions
+
+---
+
+## 🛠️ Funcionalidades (Backlog de Evolução)
+
+### Fase 1: Persistência e Infraestrutura
+- [ ] **Dockerização:** Configurar ambientes de desenvolvimento e produção isolados.
+- [ ] **Banco de Dados:** Migrar de Mock API para PostgreSQL usando Prisma ORM.
+- [ ] **Modelagem de Dados:** Estruturar relações entre Usuários, Demandas e Categorias.
+
+### Fase 2: Segurança e Performance
+- [ ] **Auth Segura:** Implementar persistência de sessão via Cookies HttpOnly.
+- [ ] **Cache Layer:** Utilizar Redis para cache de listagem de demandas frequentes.
+- [ ] **Rate Limiting:** Proteção contra abusos na API.
+
+### Fase 3: Experiência do Usuário (UX)
+- [ ] **Upload de Mídia:** Suporte para anexar fotos de evidências nas demandas (Integração AWS S3).
+- [ ] **Notificações Real-time:** Feedback instantâneo sobre mudanças de status via WebSockets.
+
+---
+
+## 📖 Como Rodar o Projeto (MVP Atual)
 
 ### Pré-requisitos
-* Node.js (v24.14.0)
-* Git instalado
+- Node.js (v24+)
+- npm ou yarn
 
 ### Instalação
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/ndrfelipe/smart-city.git
+   ```
+2. Instale as dependências do Frontend:
+   ```bash
+   cd frontend && npm install
+   ```
+3. Instale as dependências do Backend:
+   ```bash
+   cd ../backend && npm install
+   ```
 
-1. Clone o repositório: git clone [https://github.com/ndrfelipe/smart-city.git](https://github.com/ndrfelipe/smart-city.git ) 
-2. Acesse a página do projeto: cd frontend
-3. Instale as deendências: npm install
-4. Inicie o servidor de desenvolvimento: npm run dev
-5. Abra http://localhost:3000 no seu navegador para ver a aplicação rodando
+### Execução
 
-## Estrutura do Projeto:
+Para rodar o projeto em modo de desenvolvimento, você precisará abrir dois terminais:
 
-Nossa organização de pastas é baseada em responsabilidades para evitar conflitos:
-- /src/app: Rotas e páginas da aplicação (Next.js App Router).
-- /src/components: Componentes reutilizáveis (UI, formulários, layout).
-- /src/services: Configuração e chamadas para a nossa Fake API.
-- /src/store: Gerenciamento de estado global com Zustand.
-- /src/types: Definições de interfaces e tipos do TypeScript.
+#### Terminal 1: Frontend
+```bash
+cd frontend
+npm run dev
+```
+
+#### Terminal 2: Backend
+```bash
+cd backend
+npm run dev
+```
+
+O frontend estará disponível em `http://localhost:3000` e o backend em `http://localhost:5000`.
+
+---
+
+## 📈 Metas de Desenvolvimento
+O objetivo deste projeto é evoluir de um MVP para uma aplicação **Production-Ready**, focando em:
+1. **Escalabilidade:** Capaz de aguentar alto volume de acessos.
+2. **Segurança:** Proteção de dados sensíveis dos cidadãos.
+3. **Resiliência:** Logs e monitoramento para rápida resolução de bugs.
