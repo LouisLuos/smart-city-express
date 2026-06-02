@@ -18,8 +18,6 @@ export const demandService = {
         getAllSorted: async () => {
         return await demandRepository.orderByDate();
         }
+
+        
         };
-    getAllSorted: async() => {
-        return await demandRepository.orderByDate()
-    }
-};
