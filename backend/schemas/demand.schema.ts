@@ -13,4 +13,9 @@ export const demandSchema = z.object({
   status: z.enum(DEMAND_STATUS).default('PENDING')
 });
 
+
+export const demandStatusUpdated = z.object({
+  status: z.enum(DEMAND_STATUS, { message: "Selecione um status válido" }
+)})
+
 export type DemandSchemaType = z.infer<typeof demandSchema>;
