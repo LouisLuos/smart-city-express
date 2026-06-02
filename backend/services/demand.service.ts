@@ -17,6 +17,14 @@ export const demandService = {
 
         getAllSorted: async () => {
         return await demandRepository.orderByDate();
+        },
+
+        updatedStatusDemand: async (id: string, status: any) => {
+            const updatedDemand = await demandRepository.updateStatus(id, status);
+            if (!updatedDemand) {
+                throw new Error("Demanda não encontrada");
+            }
+            return updatedDemand;
         }
 
         

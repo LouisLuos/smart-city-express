@@ -7,6 +7,7 @@ const demandRouter = Router();
 
 demandRouter.post('/create', authMiddleware, demandController.create)
 demandRouter.get('/', authMiddleware, demandController.list)
+demandRouter.patch('/:id/status', authMiddleware, demandController.editStatus)
 
 
 export default demandRouter

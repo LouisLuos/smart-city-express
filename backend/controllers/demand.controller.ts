@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { demandSchema } from '../schemas/demand.schema.js';
+import { demandSchema, demandStatusUpdated } from '../schemas/demand.schema.js';
 import { demandService } from '../services/demand.service.js';
 
 export const demandController = {
@@ -57,6 +57,37 @@ export const demandController = {
         } catch (error: any) {
             return res.status(500).json({
                 message: "Erro ao listar demandas",
+                error: error.message
+            });
+        }
+    },
+
+    editStatus: async (req: Request<{ id: string }>, res: Response) => {
+        try {
+            const { id } = req.params;
+            const validatedData = demandStatusUpdated.parse(req.body);
+            
+            const user = req.user;
+            if (!user || user.role !== "MANAGER") {
+                return res.status(403).json({ message: "Acesso negado. Apenas gestores podem alterar o status." });
+            }
+
+            const updatedDemand = await demandService.updatedStatusDemand(id, validatedData.status);
+
+            return res.status(200).json({
+                message: "Status da demanda atualizado com sucesso",
+                data: updatedDemand
+            });
+        } catch (error: any) {
+            if (error.errors) {
+                return res.status(400).json({
+                    message: "Erro de validação",
+                    errors: error.errors
+                });
+            }
+
+            return res.status(500).json({
+                message: "Erro ao atualizar status",
                 error: error.message
             });
         }
