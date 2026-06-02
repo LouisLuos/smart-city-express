@@ -56,7 +56,7 @@ Plataforma profissional de gestão pública que conecta cidadãos a gestores urb
 ### Instalação
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/ndrfelipe/smart-city.git
+   git clone https://github.com/LouisLuos/smart-city-express.git
    ```
 2. Instale as dependências do Frontend:
    ```bash
