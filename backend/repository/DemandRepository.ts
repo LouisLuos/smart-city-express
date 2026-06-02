@@ -40,6 +40,14 @@ let demandasMock: Demand[] = [
 
 
 export class DemandRepository { 
+
+    async orderByDate(): Promise<Demand[]> {
+        return [...demandasMock].sort((a, b) => 
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+    }
+
+
     async findAll(): Promise<Demand[] | undefined> {
         return demandasMock
     }

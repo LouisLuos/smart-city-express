@@ -13,5 +13,13 @@ export const demandService = {
 
         const newDemand = await demandRepository.create(demandData, userId);
         return newDemand;
+        },
+
+        getAllSorted: async () => {
+        return await demandRepository.orderByDate();
+        }
+        };
+    getAllSorted: async() => {
+        return await demandRepository.orderByDate()
     }
 };

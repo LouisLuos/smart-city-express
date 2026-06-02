@@ -33,5 +33,32 @@ export const demandController = {
                 error: error.message
             });
         }
+    },
+
+    list: async (req: Request, res: Response) => {
+        try {
+            if (!req.user) {
+                return res.status(401).json({ message: "Usuário não autenticado" });
+            }
+
+            const demands = await demandService.getAllSorted();
+
+            if (!demands || demands.length === 0) {
+                return res.status(200).json({
+                    message: "Nenhuma demanda encontrada",
+                    data: []
+                });
+            }
+
+            return res.status(200).json({
+                message: "Dados retornados com sucesso",
+                data: demands
+            });
+        } catch (error: any) {
+            return res.status(500).json({
+                message: "Erro ao listar demandas",
+                error: error.message
+            });
+        }
     }
 };
