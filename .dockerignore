@@ -1,0 +1,27 @@
+# Ignorar todas as node_modules
+**/node_modules
+
+# Ignorar builds do Next.js
+**/.next
+**/dist
+**/out
+
+# Git
+.git
+.gitignore
+
+# Variáveis de ambiente
+**/.env*
+
+# IDEs
+.vscode
+.idea
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Outros
+backend/
+README.md

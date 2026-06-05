@@ -1,0 +1,33 @@
+# Dependências (serão instaladas dentro da imagem)
+node_modules
+
+# Build anterior (será gerado dentro da imagem)
+.next
+
+# Git
+.git
+.gitignore
+
+# Variáveis de ambiente (NUNCA entrar na imagem)
+.env
+.env.local
+.env.development
+.env.production
+
+# Configs de editor/IDE
+.vscode
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+
+# Ferramentas de desenvolvimento local
+.prettierrc
+eslint.config.mjs
+
+# Documentação
+README.md
+
+# Config da Vercel (você usa Docker, não precisa)
+vercel.json
