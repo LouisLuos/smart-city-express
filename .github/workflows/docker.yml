@@ -1,0 +1,35 @@
+name: Deploy frontend
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'frontend/**'
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build e Push da imagem
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./frontend/Dockerfile
+          push: true
+          tags: |
+            luos1/frontend:latest
+            luos1/frontend:${{ github.sha }}
